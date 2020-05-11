@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSI_cooperative_coevolution_v3", "MSI_cooperative_coevolution_v3\MSI_cooperative_coevolution_v3.csproj", "{9684AE92-9037-401A-A666-036F60F63908}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9684AE92-9037-401A-A666-036F60F63908}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9684AE92-9037-401A-A666-036F60F63908}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9684AE92-9037-401A-A666-036F60F63908}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9684AE92-9037-401A-A666-036F60F63908}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DB0C3DF7-642D-4CCA-9FDD-5C93D34E7492}
+	EndGlobalSection
+EndGlobal
