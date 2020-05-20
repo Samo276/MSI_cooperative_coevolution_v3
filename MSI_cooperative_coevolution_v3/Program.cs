@@ -12,7 +12,8 @@ namespace MSI_cooperative_coevolution_v3
         static void Main(string[] args)
         {
             /////////////___USTAWIENIA___/////////////////////////////////////////////////////////////////////////////////
-            int _ILOSC_WEKTOROW = 100;
+            int _ILOSC_WEKTOROW = 10000;
+            int _MAX_ITERACJI = 300;
             int _Enabile_vector_printing_after_modifications = 0; // 1 zeby drukowac, 0 zeby nie drukowac
             // zmienna c znajduje się w funckji "_CalculateFitness" w pliku non-generic-static.cs i tam nalezy ją edytować
             //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -35,12 +36,15 @@ namespace MSI_cooperative_coevolution_v3
             //tworzenie populacji 1
             pop_1._MakePop(rng);
             pop_1._CalculatePopFitness(_WZORZEC);
+            pop_1._PopSort();
+            
+            _bestOne._SaveBestOneFrom(pop_1);
 
             Console.WriteLine("----------------------------------------------------------------------------------------");
             pop_1._Crossowanie(rng);
             pop_1._PopSort();
 
-            _bestOne._SaveBestOneFrom(pop_1);
+            
             int licznik_Iteracji = 0;
             do
             {
@@ -53,23 +57,26 @@ namespace MSI_cooperative_coevolution_v3
                 Console.WriteLine($"\n----------operacja: {licznik_Iteracji++}: zostawia 155, generuje nowe 60;----------\n");
                 
                 pop_1_new = pop_1._SelectChildren();
-                for (int i = 0; i < pop_1_new.Length; i++)
+                pop_1_new._Crossowanie(rng);
+                /*for (int i = 0; i < pop_1_new.Length; i++)
                 {
                     pop_1_new[i].tab_155 = pop_1_new[0].tab_155;
                     pop_1_new[i].tab_60._GenerateTab(rng);
-                }
+                }*/
                 pop_1_new._CalculatePopFitness(_WZORZEC);
                 pop_1_new._PopSort();
 
+                
                 pop_1 = pop_1_new;
 
                 if (_Enabile_vector_printing_after_modifications == 1) pop_1._PopPrint();
 
 
                 //zosatwia 60, generuje nowe 155
-                
+                /*
                 Console.WriteLine($"\n----------operacja: {licznik_Iteracji++}: zosatwia 60, generuje nowe 155;----------\n");
                 pop_1_new = pop_1._SelectChildren();
+                pop_1_new._Crossowanie(rng);
                 for (int i = 0; i < pop_1_new.Length; i++)
                 {
                     pop_1_new[i].tab_155._GenerateTab(rng); 
@@ -80,9 +87,9 @@ namespace MSI_cooperative_coevolution_v3
 
                 pop_1 = pop_1_new;
 
-                if (_Enabile_vector_printing_after_modifications == 1) pop_1._PopPrint();
+                if (_Enabile_vector_printing_after_modifications == 1) pop_1._PopPrint();*/
 
-            } while ( (pop_1[0].fitness > _bestOne.fitness ) && ( pop_1.Length>2 ) );
+            } while ( (licznik_Iteracji < _MAX_ITERACJI )/*(pop_1[0].fitness > _bestOne.fitness )*/ && ( pop_1.Length>2 ) );
 
             _bestOne._WypiszNajlepszego();
             
